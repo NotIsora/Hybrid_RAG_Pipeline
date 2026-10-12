@@ -183,8 +183,8 @@ flowchart TD
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/scientific-rag-pipeline.git
-cd scientific-rag-pipeline
+git clone https://github.com/NotIsora/RAG.git
+cd RAG
 
 # 2. Create virtual environment
 python -m venv venv
