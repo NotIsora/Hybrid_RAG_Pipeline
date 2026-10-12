@@ -65,7 +65,8 @@ The pipeline incorporates four advanced strategies engineered specifically for s
    - Dense embeddings capture conceptual and thematic context across an 8,192-token context window.
    - Lexical BM25 ensures exact-match fidelity for alphanumeric identifiers, gene names, chemical symbols, and numeric constants.
    - Fused via **Reciprocal Rank Fusion (RRF)**:
-     $$\text{RRF\_Score}(d) = \sum_{m \in \{\text{dense}, \text{sparse}\}} \frac{1}{k + \text{rank}_m(d)} \quad (k = 60)$$
+
+     $$\text{RRF}(d) = \sum_{m \in \{\text{dense},\, \text{sparse}\}} \frac{1}{k + \text{rank}_m(d)} \quad (k = 60)$$
 2. **Cross-Encoder Re-Ranking (`BAAI/bge-reranker-large`)**:
    - Re-evaluates top candidate pairs $(q, p)$ via deep multi-head cross-attention in native Bfloat16.
    - Selects the top-4 most confident passages for generation context, filtering out lower-ranked distractors.
