@@ -775,7 +775,7 @@ else:
     ]
     plot_df = pd.DataFrame(plot_data)
 
-os.makedirs("sample_data", exist_ok=True)
+os.makedirs("assets", exist_ok=True)
 plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.available else 'default')
 
 categories = [c.replace("Type: ", "").replace("Source: ", "") for c in plot_df["Category"]]
@@ -806,9 +806,9 @@ for r in rects2:
                  va='center', fontsize=9, color='#475569')
 
 plt.tight_layout()
-plt.savefig("sample_data/plot1_retrieval_accuracy.png", dpi=300)
+plt.savefig("assets/retrieval.png", dpi=300)
 plt.show()
-print("[STATUS] Figure 1 saved to: sample_data/plot1_retrieval_accuracy.png")
+print("[STATUS] Figure 1 saved to: assets/retrieval.png")
 
 # ------------------------------------------------------------------------------
 # Figure 2: Generation Quality Metrics (Semantic F1, Token F1, ROUGE-L)
@@ -837,9 +837,9 @@ for r in rects_tok:
                  va='center', fontsize=8.5, color='#92400E')
 
 plt.tight_layout()
-plt.savefig("sample_data/plot2_generation_quality.png", dpi=300)
+plt.savefig("assets/generation.png", dpi=300)
 plt.show()
-print("[STATUS] Figure 2 saved to: sample_data/plot2_generation_quality.png")
+print("[STATUS] Figure 2 saved to: assets/generation.png")
 
 # ------------------------------------------------------------------------------
 # Figure 3: Modality Source Breakdown
@@ -871,9 +871,9 @@ for b in b2:
                  ha='center', fontsize=8.5, color='#92400E')
 
 plt.tight_layout()
-plt.savefig("sample_data/plot3_modality_breakdown.png", dpi=300)
+plt.savefig("assets/modality.png", dpi=300)
 plt.show()
-print("[STATUS] Figure 3 saved to: sample_data/plot3_modality_breakdown.png")
+print("[STATUS] Figure 3 saved to: assets/modality.png")
 
 # ------------------------------------------------------------------------------
 # Figure 4: End-to-End Latency Profile
@@ -896,9 +896,9 @@ for b in bars:
                  ha='center', fontsize=9, fontweight='bold', color='#0C4A6E')
 
 plt.tight_layout()
-plt.savefig("sample_data/plot4_latency_profile.png", dpi=300)
+plt.savefig("assets/latency.png", dpi=300)
 plt.show()
-print("[STATUS] Figure 4 saved to: sample_data/plot4_latency_profile.png")
+print("[STATUS] Figure 4 saved to: assets/latency.png")
 
 # Composite Dashboard Backup
 fig_all, axes = plt.subplots(2, 2, figsize=(16, 12), dpi=250)
@@ -957,9 +957,9 @@ ax4.legend(loc='upper right', frameon=True, fontsize=9)
 ax4.grid(axis='y', linestyle='--', alpha=0.6)
 
 plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-plt.savefig("sample_data/benchmark_results.png", dpi=300)
+plt.savefig("assets/overview.png", dpi=300)
 plt.close(fig_all)
-print("[STATUS] Composite 4-panel overview saved to: sample_data/benchmark_results.png")
+print("[STATUS] Composite 4-panel overview saved to: assets/overview.png")
 """))
 
     # =========================================================================
@@ -1386,5 +1386,5 @@ except Exception as e:
 
 if __name__ == "__main__":
     out_dir = os.path.dirname(os.path.abspath(__file__))
-    nb_path = os.path.join(out_dir, "rag_colab_pipeline.ipynb")
+    nb_path = os.path.join(out_dir, "rag_colab.ipynb")
     create_colab_notebook(nb_path)

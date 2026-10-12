@@ -104,16 +104,16 @@ Evaluated across all **3,045 official queries** on the full **[Vectara Open RAG 
 The pipeline generates dedicated, high-resolution individual analytics charts:
 
 #### Figure 1: Retrieval Accuracy (Hit@1 vs. Hit@6 across all subsets)
-![Figure 1: Retrieval Accuracy](sample_data/plot1_retrieval_accuracy.png)
+![Figure 1: Retrieval Accuracy](assets/retrieval.png)
 
 #### Figure 2: Generation Quality Metrics (Semantic F1, Token F1, ROUGE-L)
-![Figure 2: Generation Quality](sample_data/plot2_generation_quality.png)
+![Figure 2: Generation Quality](assets/generation.png)
 
 #### Figure 3: Modality Source Breakdown (Text vs. Tables vs. Figures)
-![Figure 3: Modality Breakdown](sample_data/plot3_modality_breakdown.png)
+![Figure 3: Modality Breakdown](assets/modality.png)
 
 #### Figure 4: End-to-End Latency Profile per Query Category
-![Figure 4: Latency Profile](sample_data/plot4_latency_profile.png)
+![Figure 4: Latency Profile](assets/latency.png)
 
 ---
 
@@ -172,7 +172,7 @@ flowchart TD
 ### Option 1: Run on Google Colab (Recommended)
 
 1. Open [Google Colab](https://colab.research.google.com).
-2. Go to **File** ➔ **Upload notebook**, and upload [`notebooks/rag_colab_pipeline.ipynb`](notebooks/rag_colab_pipeline.ipynb).
+2. Go to **File** ➔ **Upload notebook**, and upload [`notebooks/rag_colab.ipynb`](notebooks/rag_colab.ipynb).
 3. Navigate to **Runtime** ➔ **Change runtime type** ➔ select **A100 GPU** (or L4 GPU).
 4. Run all cells:
    - **Section 1**: Initializes models, downloads papers, and builds indexes.
@@ -249,28 +249,28 @@ The pipeline includes an interactive web interface built with **Gradio 6.0+**, f
 ## 📁 Repository Structure
 
 ```
+├── assets/
+│   ├── retrieval.png             # Figure 1: Hit@1 & Hit@6 chart (300 DPI)
+│   ├── generation.png            # Figure 2: Semantic F1, Token F1, ROUGE-L chart
+│   ├── modality.png              # Figure 3: Multimodal source comparison chart
+│   ├── latency.png               # Figure 4: End-to-end latency distribution chart
+│   └── overview.png              # Composite 4-panel dashboard
+├── data/
+│   ├── paper1.pdf                # Sample research paper 1 (arXiv:2410.14077)
+│   ├── paper2.pdf                # Sample research paper 2 (arXiv:2401.07294)
+│   └── sample.txt                # Reference text
 ├── notebooks/
-│   ├── rag_colab_pipeline.ipynb   # Complete 11-cell Google Colab notebook (A100 optimized)
-│   └── generate_notebook.py       # Generator script compiling and validating the notebook
+│   ├── rag_colab.ipynb           # Complete 11-cell Google Colab notebook (A100/L4 GPU optimized)
+│   └── build.py                  # Notebook builder script
 ├── src/
-│   ├── rag_pipeline.py            # Core RAG engine with BGE-M3, BM25, and Qwen 2.5 14B
-│   ├── vectara_bench.py           # Vectara Open RAG Bench dataset loader & harness
-│   ├── benchmark.py               # BEIR / SQuAD F1, Semantic F1, and ROUGE-L metrics
-│   └── gpu_check.py               # Hardware diagnostics (Compute capability, TF32, VRAM)
-├── sample_data/
-│   ├── plot1_retrieval_accuracy.png  # Figure 1: Hit@1 & Hit@6 chart (300 DPI)
-│   ├── plot2_generation_quality.png  # Figure 2: Semantic F1, Token F1, ROUGE-L chart
-│   ├── plot3_modality_breakdown.png  # Figure 3: Multimodal source comparison chart
-│   ├── plot4_latency_profile.png     # Figure 4: End-to-end latency distribution chart
-│   ├── benchmark_results.png         # Composite 4-panel dashboard
-│   ├── vectara_2410.14077v2.pdf      # Sample arXiv research paper
-│   └── vectara_2401.07294v4.pdf      # Sample arXiv research paper
-├── scratch/
-│   ├── plot_benchmark.py          # Standalone publication plotting script
-│   └── verify_notebook.py         # AST parser validating notebook code cells
-├── requirements.txt               # Locked dependencies
-├── LICENSE                        # MIT License
-└── README.md                      # Documentation
+│   ├── rag.py                    # Core RAG engine with BGE-M3, BM25, and Qwen 2.5 14B
+│   ├── benchmark.py              # Vectara Open RAG Bench dataset loader & harness
+│   ├── metrics.py                # BEIR / SQuAD F1, Semantic F1, and ROUGE-L metrics
+│   └── gpu.py                    # Hardware diagnostics (Compute capability, TF32, VRAM)
+├── .gitignore                    # Git ignore file
+├── LICENSE                       # MIT License
+├── requirements.txt              # Locked dependencies
+└── README.md                     # Documentation
 ```
 
 ---
